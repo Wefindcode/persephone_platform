@@ -1,0 +1,16 @@
+image:
+  registry: registry.example.com/product
+  ui:
+    repository: ui
+    tag: "0.1.0"
+  api:
+    repository: api
+    tag: "0.1.0"
+
+ingress:
+  enabled: true
+  host: product.example.com
+
+observability:
+  servicemonitor:
+    enabled: true
