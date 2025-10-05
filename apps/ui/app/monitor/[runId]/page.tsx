@@ -58,41 +58,41 @@ export default function MonitorRunPage(): JSX.Element {
       <Card title={`Мониторинг запуска ${runId}`}>
         <div className="space-y-4">
           {error ? <Alert variant="error">{error}</Alert> : null}
-          {isLoading && !summary ? <p className="text-sm text-neutral-500">Загрузка метрик…</p> : null}
+          {isLoading && !summary ? <p className="text-sm text-zinc-500">Загрузка метрик…</p> : null}
           {summary ? (
             <div className="grid gap-4 md:grid-cols-2">
               <Card title="RED метрики">
                 <dl className="space-y-3">
                   <div>
-                    <dt className="text-xs uppercase tracking-wide text-neutral-500">RPS</dt>
-                    <dd className="text-2xl font-semibold text-neutral-100">{summary.red.rps.toFixed(1)}</dd>
+                    <dt className="text-xs uppercase tracking-wide text-zinc-500">RPS</dt>
+                    <dd className="text-2xl font-semibold text-silver-light">{summary.red.rps.toFixed(1)}</dd>
                   </div>
                   <div>
-                    <dt className="text-xs uppercase tracking-wide text-neutral-500">Ошибки, %</dt>
+                    <dt className="text-xs uppercase tracking-wide text-zinc-500">Ошибки, %</dt>
                     <dd className="text-2xl font-semibold text-rose-300">{summary.red.errorsPercent.toFixed(2)}%</dd>
                   </div>
                   <div>
-                    <dt className="text-xs uppercase tracking-wide text-neutral-500">P95, мс</dt>
-                    <dd className="text-2xl font-semibold text-neutral-100">{summary.red.p95DurationMs.toFixed(0)}</dd>
+                    <dt className="text-xs uppercase tracking-wide text-zinc-500">P95, мс</dt>
+                    <dd className="text-2xl font-semibold text-silver-light">{summary.red.p95DurationMs.toFixed(0)}</dd>
                   </div>
                 </dl>
               </Card>
               <Card title="SLO">
                 <dl className="space-y-3">
                   <div>
-                    <dt className="text-xs uppercase tracking-wide text-neutral-500">Доступность</dt>
-                    <dd className="text-2xl font-semibold text-emerald-300">{summary.slo.availability.toFixed(2)}%</dd>
+                    <dt className="text-xs uppercase tracking-wide text-zinc-500">Доступность</dt>
+                    <dd className="text-2xl font-semibold text-silver-light">{summary.slo.availability.toFixed(2)}%</dd>
                   </div>
                   <div>
-                    <dt className="text-xs uppercase tracking-wide text-neutral-500">Задержка P95, мс</dt>
-                    <dd className="text-2xl font-semibold text-neutral-100">{summary.slo.latencyP95Ms.toFixed(0)}</dd>
+                    <dt className="text-xs uppercase tracking-wide text-zinc-500">Задержка P95, мс</dt>
+                    <dd className="text-2xl font-semibold text-silver-light">{summary.slo.latencyP95Ms.toFixed(0)}</dd>
                   </div>
                 </dl>
               </Card>
             </div>
           ) : null}
           {summary?.updatedAt ? (
-            <p className="text-xs text-neutral-600">Последнее обновление: {new Date(summary.updatedAt).toLocaleString()}</p>
+            <p className="text-xs text-zinc-600">Последнее обновление: {new Date(summary.updatedAt).toLocaleString()}</p>
           ) : null}
         </div>
       </Card>

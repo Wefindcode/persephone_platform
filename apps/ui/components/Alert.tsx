@@ -9,16 +9,16 @@ interface AlertProps {
 }
 
 const variantClasses: Record<AlertVariant, string> = {
-  info: 'border-sky-500/40 bg-sky-500/10 text-sky-200',
-  success: 'border-emerald-500/40 bg-emerald-500/10 text-emerald-200',
-  error: 'border-rose-500/40 bg-rose-500/10 text-rose-200',
+  info: 'border-zinc-700 bg-zinc-900/80 text-silver-light',
+  success: 'border-silver/70 bg-silver/10 text-silver-light',
+  error: 'border-rose-500/60 bg-rose-500/10 text-rose-200',
 };
 
 export default function Alert({ variant = 'info', title, children }: AlertProps): JSX.Element {
   return (
     <div className={`rounded-lg border px-4 py-3 text-sm ${variantClasses[variant]}`}>
-      {title ? <div className="mb-1 font-semibold text-neutral-100">{title}</div> : null}
-      <div className="text-sm leading-relaxed">{children}</div>
+      {title ? <div className="mb-1 font-semibold text-silver-light">{title}</div> : null}
+      <div className="text-sm leading-relaxed text-inherit">{children}</div>
     </div>
   );
 }

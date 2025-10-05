@@ -120,7 +120,7 @@ export default function DeployPage(): JSX.Element {
               type="button"
               onClick={handleRefresh}
               disabled={isChecking || !runId}
-              className="inline-flex items-center rounded-lg border border-neutral-700 px-4 py-2 text-sm font-semibold text-neutral-200 transition hover:border-neutral-500 hover:text-neutral-50"
+              className="inline-flex items-center rounded-lg border border-zinc-700 px-4 py-2 text-sm font-semibold text-silver transition hover:border-silver/60 hover:text-silver-light"
             >
               {isChecking ? 'Обновление…' : 'Обновить статус'}
             </button>
@@ -128,7 +128,7 @@ export default function DeployPage(): JSX.Element {
               type="button"
               onClick={handleDeploy}
               disabled={isDeploying || !runId}
-              className="inline-flex items-center rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-neutral-900 transition hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+              className="inline-flex items-center rounded-lg bg-silver px-4 py-2 text-sm font-semibold text-black transition hover:bg-silver-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-silver-light"
             >
               {isDeploying ? 'Деплой…' : 'Деплоить'}
             </button>
@@ -137,17 +137,17 @@ export default function DeployPage(): JSX.Element {
       >
         <div className="space-y-4">
           <div className="space-y-2">
-            <label htmlFor="environment" className="text-sm font-medium text-neutral-300">
+            <label htmlFor="environment" className="text-sm font-medium text-silver-light">
               Целевое окружение
             </label>
             <select
               id="environment"
               value={environment}
               onChange={(event) => setEnvironment(event.target.value)}
-              className="w-full rounded-lg border border-neutral-700 bg-neutral-900/80 px-4 py-2 text-sm text-neutral-100 focus:border-emerald-500 focus:outline-none"
+              className="w-full rounded-lg border border-zinc-700 bg-black/70 px-4 py-2 text-sm text-silver focus:border-silver focus:outline-none"
             >
               {ENV_OPTIONS.map((env) => (
-                <option key={env.value} value={env.value} className="bg-neutral-900">
+                <option key={env.value} value={env.value} className="bg-black">
                   {env.label}
                 </option>
               ))}
@@ -156,15 +156,15 @@ export default function DeployPage(): JSX.Element {
           {error ? <Alert variant="error">{error}</Alert> : null}
           {info ? <Alert variant="info">{info}</Alert> : null}
           {status ? (
-            <div className="space-y-2 rounded-lg border border-neutral-800 bg-neutral-900/40 p-4">
-              <p className="text-sm text-neutral-400">
-                Запуск <span className="font-semibold text-neutral-100">{status.runId}</span> в окружении{' '}
-                <span className="font-semibold text-neutral-100">{status.environment}</span>.
+            <div className="space-y-2 rounded-lg border border-zinc-800 bg-black/40 p-4">
+              <p className="text-sm text-silver-dark">
+                Запуск <span className="font-semibold text-silver-light">{status.runId}</span> в окружении{' '}
+                <span className="font-semibold text-silver-light">{status.environment}</span>.
               </p>
-              <p className="text-sm text-neutral-300">
-                Текущая фаза: <span className="font-semibold text-neutral-100">{status.phase}</span>
+              <p className="text-sm text-silver">
+                Текущая фаза: <span className="font-semibold text-silver-light">{status.phase}</span>
               </p>
-              {status.message ? <p className="text-xs text-neutral-500">{status.message}</p> : null}
+              {status.message ? <p className="text-xs text-zinc-500">{status.message}</p> : null}
             </div>
           ) : null}
           {phase === 'Succeeded' && runId ? (
@@ -172,7 +172,7 @@ export default function DeployPage(): JSX.Element {
               <button
                 type="button"
                 onClick={() => router.push(`/monitor/${encodeURIComponent(runId)}`)}
-                className="inline-flex items-center rounded-lg border border-emerald-500/40 px-4 py-2 text-sm font-semibold text-emerald-300 transition hover:bg-emerald-500/10"
+                className="inline-flex items-center rounded-lg border border-silver/60 px-4 py-2 text-sm font-semibold text-silver-light transition hover:bg-silver/10"
               >
                 К мониторингу
               </button>

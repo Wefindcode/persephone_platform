@@ -116,40 +116,40 @@ export default function PreparePage(): JSX.Element {
             type="button"
             onClick={handleStart}
             disabled={isStarting || !runId}
-            className="inline-flex items-center rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-neutral-900 transition hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+            className="inline-flex items-center rounded-lg bg-silver px-4 py-2 text-sm font-semibold text-black transition hover:bg-silver-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-silver-light"
           >
             {isStarting ? 'Запуск…' : 'Стартовать'}
           </button>
         }
       >
         <div className="space-y-4">
-          <p className="text-neutral-400">
+          <p className="text-silver-dark">
             Настраиваем зависимости, проверяем артефакт и готовим инфраструктуру. Шаги обновляются каждые 2 секунды.
           </p>
           {error ? <Alert variant="error">{error}</Alert> : null}
           <div className="space-y-3">
             {steps.length === 0 ? (
-              <p className="text-sm text-neutral-500">Шаги будут показаны после запуска подготовки.</p>
+              <p className="text-sm text-zinc-500">Шаги будут показаны после запуска подготовки.</p>
             ) : (
               <ol className="space-y-2">
                 {steps.map((step) => (
                   <li
                     key={step.name}
-                    className="flex items-start justify-between gap-4 rounded-lg border border-neutral-800 bg-neutral-900/40 px-4 py-3"
+                    className="flex items-start justify-between gap-4 rounded-lg border border-zinc-800 bg-black/40 px-4 py-3"
                   >
                     <div>
-                      <p className="font-medium text-neutral-200">{step.name}</p>
-                      {step.message ? <p className="text-xs text-neutral-500">{step.message}</p> : null}
+                      <p className="font-medium text-silver-light">{step.name}</p>
+                      {step.message ? <p className="text-xs text-zinc-500">{step.message}</p> : null}
                     </div>
                     <span
                       className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${
                         step.status === 'Succeeded'
-                          ? 'bg-emerald-500/10 text-emerald-300'
+                          ? 'bg-silver/10 text-silver-light'
                           : step.status === 'Running'
-                          ? 'bg-sky-500/10 text-sky-300'
+                          ? 'bg-white/5 text-silver'
                           : step.status === 'Failed'
                           ? 'bg-rose-500/10 text-rose-300'
-                          : 'bg-neutral-800 text-neutral-400'
+                          : 'bg-zinc-800 text-zinc-400'
                       }`}
                     >
                       {step.status}
@@ -161,7 +161,7 @@ export default function PreparePage(): JSX.Element {
           </div>
           {phase ? (
             <Alert variant={phase === 'Succeeded' ? 'success' : phase === 'Failed' ? 'error' : 'info'}>
-              Текущая фаза: <strong className="font-semibold text-neutral-100">{phase}</strong>
+              Текущая фаза: <strong className="font-semibold text-silver-light">{phase}</strong>
             </Alert>
           ) : null}
           {phase === 'Succeeded' && runId ? (
@@ -169,7 +169,7 @@ export default function PreparePage(): JSX.Element {
               <button
                 type="button"
                 onClick={() => router.push(`/deploy?runId=${encodeURIComponent(runId)}`)}
-                className="inline-flex items-center rounded-lg border border-emerald-500/40 px-4 py-2 text-sm font-semibold text-emerald-300 transition hover:bg-emerald-500/10"
+                className="inline-flex items-center rounded-lg border border-silver/60 px-4 py-2 text-sm font-semibold text-silver-light transition hover:bg-silver/10"
               >
                 Перейти к деплою
               </button>

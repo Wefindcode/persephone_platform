@@ -41,7 +41,7 @@ export default function UploadPage(): JSX.Element {
       <Card title="Загрузка артефакта">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-neutral-200" htmlFor="artifact">
+            <label className="text-sm font-medium text-silver-light" htmlFor="artifact">
               Файл модели или пакета
             </label>
             <input
@@ -49,9 +49,9 @@ export default function UploadPage(): JSX.Element {
               type="file"
               accept=".zip,.tar,.tar.gz,.onnx,.pt,.pkl"
               onChange={(event) => setFile(event.target.files?.[0] ?? null)}
-              className="w-full rounded-lg border border-dashed border-neutral-700 bg-neutral-900/60 px-4 py-12 text-center text-neutral-400 transition hover:border-emerald-500/40 hover:text-neutral-200"
+              className="w-full rounded-lg border border-dashed border-zinc-700 bg-black/40 px-4 py-12 text-center text-silver-dark transition hover:border-silver/60 hover:text-silver"
             />
-            <p className="text-xs text-neutral-500">
+            <p className="text-xs text-zinc-500">
               Поддерживаются архивы и бинарные файлы моделей. Максимальный размер — 500&nbsp;МБ.
             </p>
           </div>
@@ -62,7 +62,7 @@ export default function UploadPage(): JSX.Element {
             <button
               type="submit"
               disabled={isUploading}
-              className="inline-flex items-center justify-center rounded-lg bg-emerald-500 px-5 py-2 text-sm font-semibold text-neutral-950 transition hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+              className="inline-flex items-center justify-center rounded-lg bg-silver px-5 py-2 text-sm font-semibold text-black transition hover:bg-silver-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-silver-light"
             >
               {isUploading ? 'Загрузка…' : 'Загрузить артефакт'}
             </button>

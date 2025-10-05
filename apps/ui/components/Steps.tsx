@@ -36,13 +36,13 @@ export function Steps(): JSX.Element {
   }, [pathname]);
 
   return (
-    <nav aria-label="Процесс Persephone" className="flex items-center gap-4 text-sm text-neutral-400">
+    <nav aria-label="Процесс Persephone" className="flex items-center gap-4 text-sm text-silver-dark">
       {steps.map((step, index) => {
         const isActive = index === activeIndex;
         const isCompleted = index < activeIndex;
-        const color = isActive ? 'text-emerald-400' : isCompleted ? 'text-neutral-200' : 'text-neutral-500';
+        const color = isActive ? 'text-silver-light' : isCompleted ? 'text-silver' : 'text-zinc-500';
         const separator = index < steps.length - 1 ? (
-          <span key={`${step.label}-separator`} className="text-neutral-700">
+          <span key={`${step.label}-separator`} className="text-zinc-700">
             /
           </span>
         ) : null;
@@ -53,7 +53,7 @@ export function Steps(): JSX.Element {
           <div key={step.label} className="flex items-center gap-4">
             <Link
               href={href}
-              className={`transition-colors hover:text-emerald-300 ${color}`}
+              className={`transition-colors hover:text-silver ${color}`}
               aria-current={isActive ? 'step' : undefined}
             >
               <span className="uppercase tracking-wide">{step.label}</span>

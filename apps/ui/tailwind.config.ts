@@ -9,12 +9,15 @@ const config: Config = {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
-        neutral: {
-          950: '#030712',
+        onyx: '#050505',
+        silver: {
+          DEFAULT: '#C0C0C0',
+          light: '#D9D9D9',
+          dark: '#A6A6A6',
         },
       },
       boxShadow: {
-        glow: '0 0 35px rgba(16, 185, 129, 0.15)',
+        glow: '0 0 35px rgba(192, 192, 192, 0.12)',
       },
     },
   },
