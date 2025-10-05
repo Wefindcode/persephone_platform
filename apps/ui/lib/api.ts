@@ -25,6 +25,14 @@ export interface RunStatusStep {
   completedAt?: string;
 }
 
+export interface GpuOption {
+  id: string;
+  name: string;
+  memoryGb?: number;
+  provider?: string;
+  region?: string;
+}
+
 export interface PrepareStatusResponse {
   runId: string;
   phase: RunPhase;
@@ -108,8 +116,11 @@ export async function uploadArtifact(file: File): Promise<UploadResponse> {
   });
 }
 
-export async function prepareStart(runId: string): Promise<PrepareStatusResponse> {
+export async function prepareStart(runId: string, gpuId?: string): Promise<PrepareStatusResponse> {
   const params = new URLSearchParams({ runId });
+  if (gpuId) {
+    params.set('gpuId', gpuId);
+  }
   return req<PrepareStatusResponse>(`/prepare/start?${params.toString()}`, {
     method: 'POST',
   });
@@ -118,6 +129,11 @@ export async function prepareStart(runId: string): Promise<PrepareStatusResponse
 export async function prepareStatus(runId: string): Promise<PrepareStatusResponse> {
   const params = new URLSearchParams({ runId });
   return req<PrepareStatusResponse>(`/prepare/status?${params.toString()}`);
+}
+
+export async function listAvailableGpus(runId: string): Promise<GpuOption[]> {
+  const params = new URLSearchParams({ runId });
+  return req<GpuOption[]>(`/prepare/gpus?${params.toString()}`);
 }
 
 export async function deployStart(runId: string, env: string = 'dev'): Promise<DeployStatusResponse> {
