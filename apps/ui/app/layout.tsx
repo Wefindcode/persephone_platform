@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import './globals.css';
 import { Steps } from '../components/Steps';
 
@@ -19,7 +20,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
                 Управление жизненным циклом артефакта: от загрузки до мониторинга.
               </p>
             </div>
-            <Steps />
+            <Suspense fallback={null}>
+              <Steps />
+            </Suspense>
           </header>
           <main className="mt-8 flex-1 space-y-6">{children}</main>
           <footer className="mt-8 border-t border-zinc-900 pt-4 text-xs text-zinc-500">
