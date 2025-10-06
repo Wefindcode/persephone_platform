@@ -15,8 +15,7 @@ FROM base AS builder
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY --from=deps /app/node_modules ./node_modules
 COPY apps/ui/ ./
-RUN mkdir -p public
-RUN npm run build && npm prune --omit=dev
+RUN npm run build && npm prune --omit=dev && mkdir -p public
 
 FROM base AS runner
 ENV NODE_ENV=production
