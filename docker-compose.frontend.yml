@@ -1,0 +1,14 @@
+services:
+  ui:
+    build:
+      context: .
+      dockerfile: docker/ui.Dockerfile
+      args:
+        NEXT_PUBLIC_API_BASE: http://localhost:8000
+    image: persephone-ui:latest
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_API_BASE: http://localhost:8000
+    ports:
+      - "3000:3000"
+    restart: unless-stopped

@@ -1,0 +1,16 @@
+# General ignores
+.git
+.gitignore
+node_modules
+**/node_modules
+*.log
+
+# Next.js build artifacts
+apps/ui/.next
+apps/ui/out
+apps/ui/.turbo
+apps/ui/.vercel
+
+# Editor directories
+.vscode
+.idea
