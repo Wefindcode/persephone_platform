@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Card from '@/components/Card';
 import Alert from '@/components/Alert';
@@ -34,7 +34,7 @@ function useRunId(): string | null {
   return runId;
 }
 
-export default function PreparePage(): JSX.Element {
+function PreparePageContent(): JSX.Element {
   const router = useRouter();
   const runId = useRunId();
   const [status, setStatus] = useState<PrepareStatusResponse | null>(null);
@@ -276,5 +276,13 @@ export default function PreparePage(): JSX.Element {
         </div>
       </Card>
     </div>
+  );
+}
+
+export default function PreparePage(): JSX.Element {
+  return (
+    <Suspense fallback={null}>
+      <PreparePageContent />
+    </Suspense>
   );
 }

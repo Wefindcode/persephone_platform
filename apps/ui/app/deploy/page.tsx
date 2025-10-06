@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Card from '@/components/Card';
 import Alert from '@/components/Alert';
@@ -33,7 +33,7 @@ function useRunId(): string | null {
   return runId;
 }
 
-export default function DeployPage(): JSX.Element {
+function DeployPageContent(): JSX.Element {
   const router = useRouter();
   const runId = useRunId();
   const [environment, setEnvironment] = useState<string>('dev');
@@ -181,5 +181,13 @@ export default function DeployPage(): JSX.Element {
         </div>
       </Card>
     </div>
+  );
+}
+
+export default function DeployPage(): JSX.Element {
+  return (
+    <Suspense fallback={null}>
+      <DeployPageContent />
+    </Suspense>
   );
 }
